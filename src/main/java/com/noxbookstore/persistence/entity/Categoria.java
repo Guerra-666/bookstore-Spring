@@ -2,6 +2,9 @@ package com.noxbookstore.persistence.entity;
 
 
 import jakarta.persistence.*;
+
+import java.util.List;
+
 @Table(name = "Categorias")
 public class Categoria {
 
@@ -13,6 +16,17 @@ public class Categoria {
     private String descripcion;
 
     private Boolean estado;
+
+    @OneToMany(mappedBy = "categoria")
+    private List<Producto> productos;
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
 
     public Integer getIdCategoria() {
         return idCategoria;

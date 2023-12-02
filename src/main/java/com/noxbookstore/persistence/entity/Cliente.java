@@ -1,6 +1,9 @@
 package com.noxbookstore.persistence.entity;
 
 import jakarta.persistence.*;
+
+import java.util.List;
+
 @Table(name = "Clientes")
 public class Cliente {
 
@@ -18,6 +21,17 @@ public class Cliente {
     private String direccion;
 
     private String correo;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Compra> compras;
+
+    public List<Compra> getCompras() {
+        return compras;
+    }
+
+    public void setCompras(List<Compra> compras) {
+        this.compras = compras;
+    }
 
     public Integer getIdCliente() {
         return idCliente;
